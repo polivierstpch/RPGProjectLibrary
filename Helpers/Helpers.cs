@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using RPGProjectLibrary.Models;
 
@@ -30,12 +29,12 @@ namespace RPGProjectLibrary.Helpers
         {   
             var sb = new StringBuilder();
             sb.Append('[');
-            foreach (var item in itemCollection)
+            for (int i = 0; i < itemCollection.Length; i++)
             {
-                sb.Append(item.ToJsonString());
-                if (itemCollection.Last() != item)
+                sb.Append(itemCollection[i]);
+                if(itemCollection[i] != itemCollection[itemCollection.Length - 1])
                     sb.Append(',');
-            }
+            }   
             sb.Append(']');
             
             return sb.ToString();
