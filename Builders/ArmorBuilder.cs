@@ -27,7 +27,12 @@ namespace RPGProjectLibrary.Builders
         public ArmorBuilder WithArcaneSpellFailure(int arcaneSpellFailure)
         {
             const int maxArcaneSpellFailure = 100;
-            _arcaneSpellFailure = arcaneSpellFailure >= 0 && arcaneSpellFailure <= maxArcaneSpellFailure ? arcaneSpellFailure : 0;
+            if (arcaneSpellFailure > 100)
+                _arcaneSpellFailure = maxArcaneSpellFailure;
+            else if (arcaneSpellFailure < 0)
+                _arcaneSpellFailure = 0;
+            else
+                _arcaneSpellFailure = arcaneSpellFailure;
             return this;
         }
 
@@ -64,7 +69,7 @@ namespace RPGProjectLibrary.Builders
             Category = _category,
             Properties = Properties,
             ArmorClass = _armorClass,
-            ArcaneSpellFailure =  _arcaneSpellFailure,
+            ArcaneSpellFailure = _arcaneSpellFailure,
             SkillCheckPenalty = _skillCheckPenalty,
             MaxDexBonus = _maxDexBonus,
             BonusArmorClass = _bonusArmor,

@@ -4,11 +4,7 @@ using RPGProjectLibrary.Helpers;
 namespace RPGProjectLibrary.Models.Weapon
 {
     public class Weapon : BaseItem
-    {   
-        private static int _currentId;
-
-        public Weapon() => Id = ++_currentId;
-        
+    {
         public WeaponCategory Category { get; set; }
         public int Range { get; set; }
         public int MinDamage { get; set; }

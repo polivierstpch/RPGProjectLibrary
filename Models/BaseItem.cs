@@ -5,7 +5,9 @@ namespace RPGProjectLibrary.Models
 {
     public abstract class BaseItem
     {
-        public int Id { get; set; } 
+        private static int _currentId;
+        public BaseItem() => Id = ++_currentId;
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public HashSet<ItemProperty> Properties { get; set; }

@@ -37,17 +37,26 @@ namespace RPGProjectLibrary.Builders
         public WeaponBuilder WithCriticalRange(int criticalRange)
         {
             const int maxCriticalRange = 20;
-            _criticalRange = criticalRange > 0 && criticalRange <= maxCriticalRange ? criticalRange : 20;
+            if (criticalRange > 20)
+                _criticalRange = maxCriticalRange;
+            else if (criticalRange < 0)
+                _criticalRange = 0;
+            else
+                _criticalRange = criticalRange;
             return this;
         }
 
         public WeaponBuilder WithCriticalMultiplier(int criticalMultiplier)
         {
-            const int maxCriticalMultiplier = 4;
-            _criticalMultiplier = criticalMultiplier >= 2 && criticalMultiplier <= maxCriticalMultiplier ? criticalMultiplier : 2;
+            const int maxCriticalMultiplier = 5;
+            if (criticalMultiplier > maxCriticalMultiplier)
+                _criticalMultiplier = maxCriticalMultiplier;
+            else if (criticalMultiplier < 0)
+                _criticalMultiplier = 0;
+            else
+                _criticalMultiplier = criticalMultiplier;
             return this;
         }
-
 
         public WeaponBuilder WithBonusValues(int bonusDamage, int bonusToHit)
         {
@@ -55,13 +64,13 @@ namespace RPGProjectLibrary.Builders
             _bonusToHit = bonusToHit >= 0 ? bonusToHit : 0;
             return this;
         }
-        
+
         public WeaponBuilder WithBonusValues(int bonusValue)
         {
-            if( bonusValue >= 0)
+            if (bonusValue >= 0)
             {
                 _bonusDamage = bonusValue;
-                _bonusToHit = bonusValue;   
+                _bonusToHit = bonusValue;
             }
             return this;
         }
