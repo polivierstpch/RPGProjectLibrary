@@ -4,13 +4,12 @@ using RPGProjectLibrary.Models;
 
 namespace RPGProjectLibrary.Builders
 {
-    public abstract class BaseItemBuilder<TItem, TBuilder> 
-        where TItem : BaseItem 
+    public abstract class BaseItemBuilder<TItem, TBuilder>
+        where TItem : BaseItem
         where TBuilder : BaseItemBuilder<TItem, TBuilder>
     {
         private readonly TBuilder _builderInstance;
         protected string Name { get; private set; } = "New Item";
-
         protected HashSet<ItemProperty> Properties { get; private set; }
         protected string Description { get; private set; } = "This is a new item.";
         protected int GoldValue { get; private set; }
@@ -20,12 +19,12 @@ namespace RPGProjectLibrary.Builders
             _builderInstance = (TBuilder)this;
         }
 
-        public TBuilder WithName(string name) 
+        public TBuilder WithName(string name)
         {
             Name = name;
             return _builderInstance;
         }
-        public TBuilder WithDescription(string description) 
+        public TBuilder WithDescription(string description)
         {
             Description = description;
             return _builderInstance;
@@ -40,7 +39,7 @@ namespace RPGProjectLibrary.Builders
         public TBuilder WithProperties(params ItemProperty[] properties)
         {
             Properties = properties.ToHashSet();
-            
+
             return _builderInstance;
         }
 

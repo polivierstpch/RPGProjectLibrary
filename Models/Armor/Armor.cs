@@ -5,10 +5,6 @@ namespace RPGProjectLibrary.Models.Armor
 {
     public class Armor : BaseItem
     {
-        private static int _currentId;
-
-        public Armor() => Id = ++_currentId;
-
         public ArmorCategory Category { get; set; }
         public int ArmorClass { get; set; }
         public int ArcaneSpellFailure { get; set; }
